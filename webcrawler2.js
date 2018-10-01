@@ -1,58 +1,58 @@
 'use strict'
-json
-{
-  "pages": [
-    {
-      "address":"http://foo.bar.com/p1",
-      "links": ["http://foo.bar.com/p2", "http://foo.bar.com/p3", "http://foo.bar.com/p4"]
-    },
-    {
-      "address":"http://foo.bar.com/p2",
-      "links": ["http://foo.bar.com/p2", "http://foo.bar.com/p4"]
-    },
-    {
-      "address":"http://foo.bar.com/p4",
-      "links": ["http://foo.bar.com/p5", "http://foo.bar.com/p1", "http://foo.bar.com/p6"]
-    },
-    {
-      "address":"http://foo.bar.com/p5",
-      "links": []
-    },
-    {
-      "address":"http://foo.bar.com/p6",
-      "links": ["http://foo.bar.com/p7", "http://foo.bar.com/p4", "http://foo.bar.com/p5"]
-    }
-  ]
-}
-
-{
-  "pages": [
-      {
-      "address":"http://foo.bar.com/p1",
-      "links": ["http://foo.bar.com/p2"]
-    },
-    {
-      "address":"http://foo.bar.com/p2",
-      "links": ["http://foo.bar.com/p3"]
-    },
-    {
-      "address":"http://foo.bar.com/p3",
-      "links": ["http://foo.bar.com/p4"]
-    },
-    {
-      "address":"http://foo.bar.com/p4",
-      "links": ["http://foo.bar.com/p5"]
-    },
-    {
-      "address":"http://foo.bar.com/p5",
-      "links": ["http://foo.bar.com/p1"]
-    },
-    {
-      "address":"http://foo.bar.com/p6",
-      "links": ["http://foo.bar.com/p1"]
-    }
-  ]
-}
+// json
+// {
+//   "pages": [
+//     {
+//       "address":"http://foo.bar.com/p1",
+//       "links": ["http://foo.bar.com/p2", "http://foo.bar.com/p3", "http://foo.bar.com/p4"]
+//     },
+//     {
+//       "address":"http://foo.bar.com/p2",
+//       "links": ["http://foo.bar.com/p2", "http://foo.bar.com/p4"]
+//     },
+//     {
+//       "address":"http://foo.bar.com/p4",
+//       "links": ["http://foo.bar.com/p5", "http://foo.bar.com/p1", "http://foo.bar.com/p6"]
+//     },
+//     {
+//       "address":"http://foo.bar.com/p5",
+//       "links": []
+//     },
+//     {
+//       "address":"http://foo.bar.com/p6",
+//       "links": ["http://foo.bar.com/p7", "http://foo.bar.com/p4", "http://foo.bar.com/p5"]
+//     }
+//   ]
+// }
+//
+// {
+//   "pages": [
+//       {
+//       "address":"http://foo.bar.com/p1",
+//       "links": ["http://foo.bar.com/p2"]
+//     },
+//     {
+//       "address":"http://foo.bar.com/p2",
+//       "links": ["http://foo.bar.com/p3"]
+//     },
+//     {
+//       "address":"http://foo.bar.com/p3",
+//       "links": ["http://foo.bar.com/p4"]
+//     },
+//     {
+//       "address":"http://foo.bar.com/p4",
+//       "links": ["http://foo.bar.com/p5"]
+//     },
+//     {
+//       "address":"http://foo.bar.com/p5",
+//       "links": ["http://foo.bar.com/p1"]
+//     },
+//     {
+//       "address":"http://foo.bar.com/p6",
+//       "links": ["http://foo.bar.com/p1"]
+//     }
+//   ]
+// }
 
 const webCrawler = json => {
 
@@ -63,13 +63,13 @@ let skipped = []
 let visited = []
 let valids = []
 
-for(i=0; i < json.pages.length; i++) {
+for(let i=0; i < json.pages.length; i++) {
   valids.push(json.pages[i].address)
 }
-console.log(valids)
+// console.log(valids)
 
 // push in all addresses to success array 1 by one
-for(i=0; i < json.pages.length; i++) {
+for(let i=0; i < json.pages.length; i++) {
   // success.push(json.pages[i].address)
   // as each address is pushed in - iterate over that pages associated links
 
@@ -78,7 +78,7 @@ for(i=0; i < json.pages.length; i++) {
     success.push(json.pages[i].address)
   }
 
-  for(j=0; j < json.pages[i].links.length; j++) {
+  for(let j=0; j < json.pages[i].links.length; j++) {
     let elem = json.pages[i].links[j]
     // IF link address doesn't exist in the success array and the iterated link doesn't exist in the success Array
     // add that address to the success array (prevents address 6 being added)
@@ -103,8 +103,8 @@ for(i=0; i < json.pages.length; i++) {
 
 
 // 1. iterate over visited to find errors - if a link is in visited but doesn't exist in the success array - it is an error
-console.log(visited)
-for(i=0; i < visited.length; i++) {
+// console.log(visited)
+for(let i=0; i < visited.length; i++) {
   if(success.indexOf(visited[i]) === -1 && valids.indexOf(visited[i]) === -1) {
     errors.push(visited[i])
   }
@@ -121,3 +121,5 @@ return {
   errors: errors
 }
 }
+
+module.exports = { webCrawler }

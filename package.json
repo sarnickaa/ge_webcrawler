@@ -1,0 +1,22 @@
+{
+  "name": "ge_webcrawler",
+  "version": "1.0.0",
+  "description": "webcrawler challenge",
+  "main": "webcrawler2.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarnickaa/ge_webcrawler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sarnickaa/ge_webcrawler/issues"
+  },
+  "homepage": "https://github.com/sarnickaa/ge_webcrawler#readme",
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
+}

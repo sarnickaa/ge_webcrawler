@@ -1,6 +1,6 @@
 
 const assert = require('assert');
-const webcrawler2 = require('../webcrawler2.js')
+const webcrawler3 = require('../webcrawler3.js')
 const data = require('../internet_datasets/data.js')
 
 // https://www.taniarascia.com/unit-testing-in-javascript/
@@ -9,7 +9,7 @@ const internet1 = data.json
 const internet2 = data.json2
 
 it('correctly returns result for Internet1', () => {
-  assert.deepEqual(webcrawler2.webCrawler(internet1), { success:
+  assert.deepEqual(webcrawler3.webCrawler(internet1), { success:
    [ 'http://foo.bar.com/p1',
      'http://foo.bar.com/p2',
      'http://foo.bar.com/p4',
@@ -24,7 +24,7 @@ it('correctly returns result for Internet1', () => {
 });
 
 it('correctly returns result for Internet2', () => {
-  assert.deepEqual(webcrawler2.webCrawler(internet2), { success:
+  assert.deepEqual(webcrawler3.webCrawler(internet2), { success:
    [ 'http://foo.bar.com/p1',
      'http://foo.bar.com/p2',
      'http://foo.bar.com/p3',
